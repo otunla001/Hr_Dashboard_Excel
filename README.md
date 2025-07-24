@@ -1,108 +1,145 @@
-# HR Dashboard – Excel
+# HR_ DASHBOARD
 
-An interactive Human Resources dashboard built with Microsoft Excel to provide insights into workforce performance, demographics, recruitment trends, and employee engagement.
+# Data Portfolio: SQL - EXCEL
 
----
 
-##  Table of Contents
-- [ Objective](#-objective)
-- [ Data Source](#-data-source)
-- [ Design](#-design)
-- [ Tools](#-tools)
-- [⚙ Development](#️-development)
-  - [ Data Exploration](#-data-exploration)
-  - [ Data Cleaning](#-data-cleaning)
-  - [ Data Transformation](#-data-transformation)
-  - [ SQL View Creation](#-sql-view-creation)
-- [ Visualization](#-visualization)
-- [ Conclusion](#-conclusion)
 
----
 
-### Objective
 
-**Main Goal:**  
-To equip the HR department with actionable insights into:
-- Workforce demographics  
-- Employee satisfaction  
-- Recruitment sources  
-- Retention trends  
 
-**Ideal Solution:**  
-A dashboard that visualizes key HR metrics, including:
--  Employee Count by Department & State  
--  Gender Breakdown  
--  Department-Wise Distribution  
--  Marital Status Distribution  
--  Recruitment Source Insights  
--  Satisfaction Levels  
--  Employment Status (Active vs Terminated)  
 
----
+# Table of contents 
 
-##  User Story
+- [Objective](#objective)
+- [Data Source](#data-source)
+- [Stage](#stage)
+ - [Tools](#tools)
+- [Development](#development)
+   - [Data Exploration](#data-exploration)
+  - [Data Cleaning](#data-cleaning)
+  - [Transform the Data](#transform-the-data)
+  - [Create the SQL View](#create-the-sql-view)
+- [Visualization](#visualization)
+- [Conclusion](#conclusion)
 
-> As the Head of Human Resources, I want to use the HR dashboard to monitor employee performance and satisfaction.  
-> This dashboard helps me identify top-performing departments, high-turnover segments, and satisfaction trends.  
-> With these insights, I can reward teams, provide support, and improve employee retention and engagement.
 
----
 
-### Design Stages
--  Design
--  Development
--  Testing
--  Analysis
 
----
+# Objective 
 
-### Tools
+- What is the key Main point? 
 
-| Tool         | Purpose                                         |
-|--------------|--------------------------------------------------|
-| Excel        | Data exploration & dashboard visualization      |
-| SQL Server   | Data cleaning, shaping, and querying            |
-| GitHub       | Version control and project documentation       |
+Provide the HR department with actionable insights into employee performance, demographics, satisfaction
 
----
 
-## ⚙️ Development
+- What is the ideal solution? 
 
-### 🔍 Data Exploration
-Explored the dataset in Excel for:
-- Inconsistencies and missing values
-- Bugs or unusual characters
-- Understanding column relationships
+To create a dashboard that provides insights into the Hr Data that includes their 
+-	Employee Count by Department & State
+-	Total Employee By Gender Breakdown
+-	Total Employee By Department
+-	Total Employee By Marital Status
+-	Total Employee By Recruitment Source 
+-	Satisfaction Levels
+-	Employment Status (Active vs Terminated)
 
-Initial insights:
-- 12+ relevant columns
-- Dataset is larger than needed
 
----
 
-### 🧹 Data Cleaning
 
-**Goals:**
-- Keep only relevant columns
-- Clean text and remove nulls
-- Convert codes to readable labels
+## User story 
 
-| Property         | Description     |
-|------------------|-----------------|
-| Rows             | 312             |
-| Columns          | 16              |
+As the Head of Human Resources, I want to use the HR dashboard to monitor employee performance and satisfaction across the company.
+This dashboard should allow me to identify top-performing departments and low-performing ones based on key metrics such as Employee Satisfaction Score, Marital Status of Total Employee, Active and Terminated Employee, and Employee Recruitment Source.
+With this information, I can make more informed decisions about which departments or teams to reward, where to allocate more support or training, and how to improve employee retention and engagement overall.
 
-**Steps Taken:**
-1. Dropped unnecessary columns  
-2. Merged "Voluntarily Terminated" & "Terminated for Cause" as "Terminated"  
-3. Renamed columns  
-4. Converted `M` → `Male`, `F` → `Female`  
-5. Translated satisfaction scores:  
-   `1 = Very Low` to `5 = Very High`
 
----
 
-###  Data Transformation 
+# Data source 
+
+- Where is the data coming from? 
+The data is sourced from Kaggle (an Excel extract)
+
+
+# Stages
+
+- Design
+- Developement
+- Testing
+- Analysis 
+
+ 
+
+## Tools 
+
+
+| Tool | Purpose |
+| --- | --- |
+| Excel | Exploring the data, Visualizing the data via interactive dashboards |
+| SQL Server | Cleaning, testing, and analyzing the data |
+| GitHub | Hosting the project documentation and version control |
+
+
+
+# Development
+
+## Pseudocode
+
+- What's the general approach in creating this solution from start to finish?
+
+1. Get the data
+2. Explore the data in Excel
+3. Load the data into SQL Server
+4. Clean the data with Excel
+5. Test the data with SQL
+6. Visualize the data in Excel
+7. Generate the findings based on the insights
+8. Write the documentation + commentary
+9. Publish the data to GitHub Pages
+
+## Data exploration notes
+
+This is the stage where you have a scan of what's in the data, errors, inconcsistencies, bugs, weird and corrupted characters etc  
+
+
+- What are your initial observations with this dataset? What's caught your attention so far? 
+
+1. There are at least 12 columns that contain the data we need for this analysis, which signals we have everything we need from the file without needing to contact the client for any more data. 
+2. We have more data than we need.
+
+
+
+
+## Data cleaning 
+- What do we expect the clean data to look like? (What should it contain? What contraints should we apply to it?)
+
+The aim is to refine our dataset to ensure it is structured and ready for analysis. 
+
+The cleaned data should meet the following criteria and constraints:
+
+- Only relevant columns should be retained.
+- All data types should be appropriate for the contents of each column.
+- No column should contain null values, indicating complete data for all records.
+
+Below is a table outlining the constraints on our cleaned dataset:
+
+| Property | Description |
+| --- | --- |
+| Number of Rows | 312 |
+| Number of Columns | 16 |
+
+
+- What steps are needed to clean and shape the data into the desired format?
+
+1. 	Remove unnecessary columns by only selecting the ones you need
+2.	Replace Voluntarily Terminated and Terminated for cause to Terminated
+3.	Rename columns using aliases
+4.	CHANGE M-Male F-Female
+5.	CHANGE Employee satisfactory from 1- Very low, 2- low, 3-Acceptable, 4-High, 5- Very high
+
+
+
+
+### Transform the data  
 
 ## Analyze key Indicators 
 ### SQL query 
@@ -120,6 +157,7 @@ SELECT SUM(CASE WHEN EmploymentStatus IN ('Voluntarily Terminated', 'Terminated 
 -- 4) Total Male Employee: SELECT COUNT(*) AS Male FROM hrdata WHERE Gender = 'M'
 
 -- 5) Total Female Employee: SELECT COUNT(*) AS Female FROM hrdata WHERE Gender = 'F'
+
 
 CHARTS RQUIREMENT
 
@@ -154,13 +192,13 @@ GROUP BY Satisfaction_Level
 ```
 # TOTAL_EMPLOYEE
 ![Terminated Employees](Document/Headcount.png)
-#  Active Employees
+#  ACTIVE_EMPLOYEES
 ![Active Employees](Document/Active.png)
-# TERMIANTED_EMPLOYEE
+# TERMINATED_EMPLOYEES
 ![Terminated](Document/Terminated.png)
-# MALE_EMPLOYEE
+# MALE_EMPLOYEES
 ![Male](Document/Male.png)
-#  FEMALE_EMPLOYEE 
+#  FEMALE_EMPLOYEES
 ![Female](Document/Female.png)
 
 # Visualization 
@@ -170,35 +208,37 @@ GROUP BY Satisfaction_Level
 
 - What does the dashboard look like?
 
-![Excel Dashboard](Document/EXCEL_HR_DB.png)
-###  Conclusion
+![Excel Dashboard](Document/Excel%20HR%20DB.png)
 
-###  Key Findings
+# Analysis 
 
-###  Gender Breakdown
-- 43% Male / 57% Female  
-- IT/IS mostly male, Production mostly female  
+## Findings
 
-####  Department Distribution
-- **Top 3 Departments:**  
-  - Production  
-  - IT/IS  
-  - Sales  
-- These departments drive core company functions  
+- What did we find
 
-####  Marital Status
-- High number of Singles and Marrieds  
+-  Gender Breakdown
+   - 43% Male / 57% Female  
+   - IT/IS mostly male, Production mostly female  
 
-####  Recruitment Sources
-- Majority from **Indeed**, followed by **LinkedIn**  
-- Indeed hires show better performance  
+- Department Distribution
+  - *Top 3 Departments:*  
+    - Production  
+    - IT/IS  
+    - Sales  
+   - These departments drive core company functions  
 
-####  Satisfaction Levels
-- Most employees fall into **“Acceptable”**  
-- Some departments with high workload scored **“Low”**  
+- Marital Status
+   - High number of Singles and Marrieds  
 
-####  Employment Status
-- 67% **Active** / 33% **Terminated**
+- Recruitment Sources
+  - Majority from *Indeed*, followed by *LinkedIn*   
+
+- Satisfaction Levels
+  - Most employees fall into *“Acceptable”*  
+  - Some departments with high workload scored *“Low”*  
+
+- Employment Status
+   - 67% *Active* / 33% *Terminated*
 
 
 
