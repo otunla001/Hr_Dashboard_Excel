@@ -102,31 +102,40 @@ Initial insights:
 
 ---
 
-###  Data Transformation
+###  Data Transformation 
 
-Key Indicators & SQL Examples:
-
+## Analyze key Indicators 
+### SQL query 
 ```sql
+
 -- Total Employees
-SELECT COUNT(*) AS Headcount FROM hrdata;
+SELECT COUNT(*) AS Headcount FROM hrdata
 
 -- Active Employees
-SELECT COUNT(*) AS Active_Employees FROM hrdata WHERE EmploymentStatus = 'Active';
+SELECT COUNT(*) AS Active_Employees FROM hrdata WHERE EmploymentStatus = 'Active'
 
 -- Terminated Employees
-SELECT SUM(CASE WHEN EmploymentStatus IN ('Voluntarily Terminated', 'Terminated for Cause') THEN 1 ELSE 0 END) AS Terminated_Employee FROM hrdata;
+SELECT SUM(CASE WHEN EmploymentStatus IN ('Voluntarily Terminated', 'Terminated for Cause') THEN 1 ELSE 0 END) AS Terminated_Employee FROM hrdata
+
+-- 4) Total Male Employee: SELECT COUNT(*) AS Male FROM hrdata WHERE Gender = 'M'
+
+-- 5) Total Female Employee: SELECT COUNT(*) AS Female FROM hrdata WHERE Gender = 'F'
+
+CHARTS RQUIREMENT
+
+We would like to visualize various aspects of our pizza sales data to gain insights and understand key trends. We have identified the following requirements for creating charts:
 
 -- Gender Breakdown
-SELECT Gender, COUNT(*) FROM hrdata GROUP BY Gender;
+SELECT Gender, COUNT(*) FROM hrdata GROUP BY Gender
 
 -- Recruitment Source
-SELECT RecruitmentSource, COUNT(*) AS Total_Employees FROM hrdata GROUP BY RecruitmentSource;
+SELECT RecruitmentSource, COUNT(*) AS Total_Employees FROM hrdata GROUP BY RecruitmentSource
 
 -- Department Distribution
-SELECT Department, COUNT(*) AS Total_Employees FROM hrdata GROUP BY Department;
+SELECT Department, COUNT(*) AS Total_Employees FROM hrdata GROUP BY Department
 
 -- Marital Status
-SELECT MaritalStatus, COUNT(*) AS Total_Employees FROM hrdata GROUP BY MaritalStatus;
+SELECT MaritalStatus, COUNT(*) AS Total_Employees FROM hrdata GROUP BY MaritalStatus
 
 -- Satisfaction Levels
 SELECT 
@@ -140,15 +149,31 @@ SELECT
   END AS Satisfaction_Level,
   COUNT(*) AS Total_Employees
 FROM hrdata
-GROUP BY Satisfaction_Level;
+GROUP BY Satisfaction_Level
 
----
+```
+# TOTAL_EMPLOYEE
+![Terminated Employees](Document/Headcount.png)
+#  Active Employees
+![Active Employees](Document/Active.png)
+# TERMIANTED_EMPLOYEE
+![Terminated](Document/Terminated.png)
+# MALE_EMPLOYEE
+![Male](Document/Male.png)
+#  FEMALE_EMPLOYEE 
+![Female](Document/Female.png)
+#  TOTAL_EMPLOYEE BY GENDER
+![Total employee by gender](Document/Female.png)
+#  TOTAL_EMPLOYEE BY DEPARTMENT
+![Total employee by department](Document/DepartmentBYEmployee.png)
+#  TOTAL_EMPLOYEE BY RECRUITMENT SOURCE
+![Total employee by department](Document/RsourceEmployee.png)
 
 ###  Conclusion
 
 ###  Key Findings
 
-####  Gender Breakdown
+###  Gender Breakdown
 - 43% Male / 57% Female  
 - IT/IS mostly male, Production mostly female  
 
