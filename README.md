@@ -163,11 +163,13 @@ GROUP BY Satisfaction_Level
 #  FEMALE_EMPLOYEE 
 ![Female](Document/Female.png)
 #  TOTAL_EMPLOYEE BY GENDER
-![Total employee by gender](Document/Female.png)
+![Gender By Employee](Document/Gender By Employee.png)
 #  TOTAL_EMPLOYEE BY DEPARTMENT
-![Total employee by department](Document/DepartmentBYEmployee.png)
+![Department By Employee](Document/Department By Employee.png)
 #  TOTAL_EMPLOYEE BY RECRUITMENT SOURCE
-![Total employee by department](Document/RsourceEmployee.png)
+![TR source By Employee](Document/R source By Employee.png)
+#  TOTAL_EMPLOYEE BY SATISFACTORY LEVEL
+![S Level By Employee ](Document/S Level By Employee.png)
 
 ###  Conclusion
 
